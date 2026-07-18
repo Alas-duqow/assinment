@@ -1,0 +1,156 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title> Searchable Student Table</title>
+<script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+<style>
+  body {
+    font-family: 'Poppins', sans-serif;
+    background: #f4f7fa;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    padding: 40px;
+  }
+
+  h2 {
+    color: #333;
+    margin-bottom: 20px;
+  }
+
+  #myInput {
+    width: 60%;
+    padding: 12px;
+    font-size: 16px;
+    border: 2px solid #3498db;
+    border-radius: 8px;
+    outline: none;
+    transition: 0.3s;
+  }
+
+  #myInput:focus {
+    border-color: #2ecc71;
+    box-shadow: 0 0 8px #2ecc71;
+  }
+
+  table {
+    width: 90%;
+    border-collapse: collapse;
+    background: white;
+    box-shadow: 0 4px 20px rgba(0,0,0,0.1);
+    border-radius: 10px;
+    overflow: hidden;
+    margin-top: 30px;
+    animation: fadeIn 0.6s ease;
+  }
+
+  th {
+    background: #3498db;
+    color: white;
+    text-transform: uppercase;
+    padding: 14px;
+  }
+
+  td {
+    padding: 12px;
+    text-align: center;
+    border-bottom: 1px solid #eee;
+  }
+
+  tr:hover {
+    background: #f1f9ff;
+    transition: 0.3s;
+  }
+
+  @keyframes fadeIn {
+    from { opacity: 0; transform: translateY(-10px); }
+    to { opacity: 1; transform: translateY(0); }
+  }
+
+  @media (max-width: 700px) {
+    #myInput {
+      width: 90%;
+    }
+    table {
+      font-size: 14px;
+      width: 100%;
+    }
+  }
+</style>
+</head>
+<body>
+
+<h2> Searchable Student Information</h2>
+<input id="myInput" placeholder="Search by name, email, or course...">
+
+<table>
+  <thead>
+    <tr>
+      <th>Name</th>
+      <th>Telephone</th>
+      <th>Email</th>
+      <th>Course</th>
+      <th>Address</th>
+    </tr>
+  </thead>
+  <tbody id="myTable">
+    <tr>
+      <td>Faarax Maxamed</td>
+      <td>98888</td>
+      <td>faarax@example.com</td>
+      <td>Computer Science</td>
+      <td>Mogadishu</td>
+    </tr>
+    <tr>
+      <td>Cali Cabdi</td>
+      <td>66755</td>
+      <td>cali123@example.com</td>
+      <td>Information Technology</td>
+      <td>Hargeisa</td>
+    </tr>
+    <tr>
+      <td>Layla Xasan</td>
+      <td>77662</td>
+      <td>layla.x@example.com</td>
+      <td>Business Administration</td>
+      <td>Garowe</td>
+    </tr>
+    <tr>
+      <td>Axmed Yuusuf</td>
+      <td>55433</td>
+      <td>axmed.y@example.com</td>
+      <td>Software Engineering</td>
+      <td>Kismayo</td>
+    </tr>
+    <tr>
+      <td>Maryan Cali</td>
+      <td>22334</td>
+      <td>maryan.c@example.com</td>
+      <td>Data Science</td>
+      <td>Baidoa</td>
+    </tr>
+    <tr>
+      <td>Omar Mahad</td>
+      <td>88990</td>
+      <td>omar.m@example.com</td>
+      <td>Networking</td>
+      <td>Beledweyne</td>
+    </tr>
+  </tbody>
+</table>
+
+<script>
+$(document).ready(function(){
+  $("#myInput").on("keyup", function() {
+    var value = $(this).val().toLowerCase();
+    $("#myTable tr").filter(function() {
+      $(this).toggle($(this).text().toLowerCase().includes(value));
+    });
+  });
+});
+</script>
+
+</body>
+</html>
